@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NeuroNetwork"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="134.314" Width="454.412">
     <Grid>
-        <Button x:Name="Study" Content="Обучить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="101" Height="50" Click="Study_OnClick"/>
-
+        <Button x:Name="Upload" Content="Анализ" HorizontalAlignment="Left" Margin="361,40,0,0" VerticalAlignment="Top" Width="75" Click="Upload_Click"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="346"/>
+        <Label x:Name="label" Content="Загрузите файл для анализа:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.231,0.229"/>
+        <Label x:Name="label1" Content="Распознаное значение:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="value" Content="" HorizontalAlignment="Left" Margin="153,68,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

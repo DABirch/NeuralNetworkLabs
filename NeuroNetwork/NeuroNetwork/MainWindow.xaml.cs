@@ -7,6 +7,7 @@ using System.IO;
 using NeuroNetwork.Network;
 using System.Collections;
 using System.Windows;
+using Image = NeuroNetwork.ViewModels.Image;
 
 namespace NeuroNetwork
 {
@@ -23,10 +24,7 @@ namespace NeuroNetwork
             InitializeComponent();
 
             _neuronNetwork = new KohonenNetwork(45 * 45, 6);
-        }
 
-        private void Study_OnClick(object sender, RoutedEventArgs e)
-        {
             var files = Directory.EnumerateFiles(@".\images\", "*.png");
 
             var images = new List<ViewModels.Image>();
@@ -47,6 +45,7 @@ namespace NeuroNetwork
                 _neuronNetwork.Save(Environment.CurrentDirectory);
             }
         }
+
 
         private IEnumerable<int> LoadPixels(string fullFileName)
         {
@@ -77,5 +76,40 @@ namespace NeuroNetwork
             return Int32.Parse(returnValue);
         }
 
+        private void Upload_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "PNG Files (*.png)|*.png";
+
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                textBox.Text = filename;
+
+                Image uploadImage = new Image();
+                uploadImage.Pixels = LoadPixels(filename).ToArray();
+                uploadImage.ShortFileName = Path.GetFileNameWithoutExtension(filename);
+                uploadImage.Uri = filename;
+
+                int neuroAnswer = _neuronNetwork.Handle(uploadImage.Pixels);
+
+                uploadImage.Answer = neuroAnswer;
+                value.Content = neuroAnswer.ToString();
+
+            }
+        }
     }
 }
