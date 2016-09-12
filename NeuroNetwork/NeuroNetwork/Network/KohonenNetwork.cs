@@ -1,6 +1,6 @@
 using System;
-using System.Drawing;
 using System.IO;
+using System.Drawing;
 
 namespace NeuroNetwork.Network
 {
@@ -37,6 +37,7 @@ namespace NeuroNetwork.Network
             }
         }
 
+        // Пропустить вектор через нейронную сеть 
         public int Handle(int[] input)
         {
             for (var i = 0; i < _inputs.Length; i++)
@@ -63,6 +64,7 @@ namespace NeuroNetwork.Network
             return maxIndex;
         }
 
+        //обучить нейронную сеть
         public void Study(int[] input, int correctAnswer)
         {
             var neuron = _neurons[correctAnswer];
@@ -73,7 +75,7 @@ namespace NeuroNetwork.Network
             }
         }
 
-
+        //сохранить данные
         public void Save(string folderPath)
         {
             var size = (int) Math.Sqrt(_inputs.Length);
