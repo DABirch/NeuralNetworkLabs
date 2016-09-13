@@ -1,5 +1,8 @@
 ﻿namespace NeuroNetwork.ViewModels
 {
+    /// <summary>
+    /// Image.
+    /// </summary>
     public class Image
     {
         public string ShortFileName { get; set; }

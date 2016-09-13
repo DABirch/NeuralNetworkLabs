@@ -68,6 +68,11 @@ namespace NeuroNetwork
             return 0;
         }
 
+        /// <summary>
+        /// Gets the name of the answer from file.
+        /// </summary>
+        /// <returns>The answer from file name.</returns>
+        /// <param name="shortFileName">Short file name.</param>
         private int GetAnswerFromFileName(string shortFileName)
         {
             shortFileName = shortFileName.Substring(shortFileName.LastIndexOf(" ") + 1, 1);
@@ -75,6 +80,7 @@ namespace NeuroNetwork
 
             return Int32.Parse(returnValue);
         }
+
 
         private void Upload_Click(object sender, RoutedEventArgs e)
         {
